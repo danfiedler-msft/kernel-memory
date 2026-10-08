@@ -35,10 +35,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out source
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Setup .NET ${{ matrix.dotnet }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
@@ -52,7 +52,7 @@ jobs:
         run: dotnet test KernelMemory.sln -c Debug --filter Category=UnitTest -v q -l html --results-directory "TestResults-${{ matrix.os }}-${{ matrix.dotnet }}" --nologo --no-build
 
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: dotnet-results-${{ matrix.os }}-${{ matrix.dotnet }}
           path: TestResults-${{ matrix.os }}-${{ matrix.dotnet }}
